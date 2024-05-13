@@ -1,7 +1,8 @@
 module Dogs
   class Breeds < Client
     def fetch_image(breed)
-      get("/breed/#{breed}/images")['message']
+      response = get("/breed/#{breed}/images")
+      response ? response['message']: nil
     end
   end
 end
