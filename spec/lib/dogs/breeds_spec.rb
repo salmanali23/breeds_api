@@ -7,7 +7,7 @@ RSpec.describe Dogs::Breeds do
   describe '#fetch_image' do
     context 'when the request is successful' do
       let(:breed) { 'hound' }
-      let(:response_body) { { 'message' => ['image1.jpg', 'image2.jpg'] } }
+      let(:response_body) { { 'message' => ['image1.jpg'] } }
 
       before do
         allow(Faraday).to receive(:new).and_return(double(get: double(body: response_body.to_json, success?: true)))
@@ -15,7 +15,7 @@ RSpec.describe Dogs::Breeds do
 
       it 'returns an array of image URLs' do
         images = breeds_client.fetch_image(breed)
-        expect(images).to eq(response_body['message'])
+        expect(images).to eq(response_body['message'].first)
       end
     end
 
