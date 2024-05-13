@@ -49,6 +49,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem 'shoulda-matchers'
   gem 'pry-rails'
+  gem 'faker'
 end
 
 group :development do
